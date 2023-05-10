@@ -5,11 +5,7 @@ Please go under edit and edit this file as needed for your project
 ### Group Leader - IT21221378 - Wishvajith.S.A.S 
 ### Member 2 - IT21202636 - Rathnayake M.D.M
 ### Member 3 - IT21321122 - Isheni M.A. K 
-### Member 4 - IT21212086 - Abisheka J.M.M
-### Member 5 - IT21167546 - M.G.T. Rashmika
-### Member 6 - IT21180484 - L.A.I Kumara
-### Member 7 - IT21187896 - A.M.Y.S Abeykoon
-### Member 8 - IT20301118 - Balamanage T.G
+
 
 #### Brief Description of Project - 
 
@@ -18,10 +14,9 @@ It provides customers to buy mobiles and accessories online that may help in sav
 
 Customer need to register before mading any purchases by proving details. After he/she can buy products directly.then system process and deliver items to customer’s door step.
 
-Also there is section for repair managements that helps to increase efficient of repairing activities.
 
 
 #### Technologies used - MERN stack
 
-Note - The student's github account should be given in brackets e.g. (asiriRepos), this ideally should be your student id 
+
 

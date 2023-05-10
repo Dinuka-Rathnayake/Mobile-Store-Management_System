@@ -1,0 +1,13 @@
+/* add products */
+h1{
+    color: black;  
+  }
+  
+  .form-out{
+    padding: 30px;
+    background-color: #c6dbed;
+  }
+  
+  .form-label{
+    font-weight: bold;
+  }

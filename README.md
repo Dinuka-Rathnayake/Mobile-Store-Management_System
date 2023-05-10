@@ -1,10 +1,10 @@
 Please go under edit and edit this file as needed for your project
 
 # Project Name - Mobile-Store-Management-System
-# Batch - IT_Y2S2_WE_B02
-### Group Leader - IT21221378 - Wishvajith.S.A.S 
-### Member 2 - IT21202636 - Rathnayake M.D.M
-### Member 3 - IT21321122 - Isheni M.A. K 
+
+### Group Leader - Wishvajith.S.A.S 
+### Member 2 - Rathnayake M.D.M
+### Member 3 - Isheni M.A. K 
 
 
 #### Brief Description of Project - 

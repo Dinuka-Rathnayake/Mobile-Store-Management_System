@@ -10,17 +10,31 @@ import Iconify from '../../../components/iconify';
 
 export default function LoginForm() {
   const navigate = useNavigate();
+  const [inputEmail, setInputEmail] = useState("");
+  const [inputPassword, setInputPassword] = useState("");
 
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClick = () => {
-    navigate('/dashboard', { replace: true });
+
+    const adminEmail = "dinuka"
+    const adminPassword = 123
+    if(inputEmail == adminEmail &&  inputPassword == adminPassword){
+      navigate('/product/app', { replace: true });
+    }
+    else{
+      alert("Username & password are incorrect")
+    }
+
+    
   };
 
   return (
     <>
       <Stack spacing={3}>
-        <TextField name="email" label="Email address" />
+        <TextField name="email" label="Email address" onChange={(e) => {
+                                setInputEmail(e.target.value);
+                            }} />
 
         <TextField
           name="password"
@@ -35,11 +49,17 @@ export default function LoginForm() {
               </InputAdornment>
             ),
           }}
+          onChange={(e) => {
+            setInputPassword(e.target.value);
+        }}
         />
       </Stack>
 
+      {/* {console.log("Hiii password "+ adminPassword)} */}
+
+
       <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ my: 2 }}>
-        <Checkbox name="remember" label="Remember me" />
+        {/* <Checkbox name="remember" label="Remember me" /> */}
         <Link variant="subtitle2" underline="hover">
           Forgot password?
         </Link>

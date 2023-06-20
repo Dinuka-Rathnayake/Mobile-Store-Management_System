@@ -66,7 +66,7 @@ export default function Router() {
       path: '/product',
       element: <DashboardLayout />,
       children: [
-        { element: <Navigate to="/product/app" />, index: true },
+        { element: <Navigate to="/product/app" />},
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'all', element: <AllProducts setId={setId} /> },
         { path: 'all/add', element: <AddProducts /> },
@@ -80,7 +80,7 @@ export default function Router() {
       path: '/finance',
       element: <DashboardLayout />,
       children: [
-        { element: <Navigate to="/finance/app" /> },
+        // { element: <Navigate to="/finance/app" /> },
         { path: 'app', element: <DashboardAppPage /> },
 
         { path: 'incomes/all', element: <AllIncomes setId={setId} /> },

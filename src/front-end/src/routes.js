@@ -66,7 +66,7 @@ export default function Router() {
       path: '/product',
       element: <DashboardLayout />,
       children: [
-        { element: <Navigate to="/product/app" />},
+        // { element: <Navigate to="/product/app" />},
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'all', element: <AllProducts setId={setId} /> },
         { path: 'all/add', element: <AddProducts /> },
@@ -207,16 +207,20 @@ export default function Router() {
 
 
 
+    // {
+    //   path: '/login',
+    //   element: <LoginPage />,
+    //   element: <Navigate to="/login" />,index: true
+    // },
     {
-      path: 'login',
       element: <LoginPage />,
-    },
-    {
       element: <SimpleLayout />,
       children: [
-        { element: <Navigate to="/product/app" />, index: true },
+        {element: <Navigate to="/login" />,index: true},
+        { element: <Navigate to="/product/app" />,  },
         { path: '404', element: <Page404 /> },
         { path: '*', element: <Navigate to="/404" /> },
+        {path: '/login', element : <LoginPage />},
       ],
     },
     {

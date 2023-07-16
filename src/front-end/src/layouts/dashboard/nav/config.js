@@ -56,16 +56,16 @@ const navConfig = [
   {
     title: 'Supplier List',
     path: '/supplier/SupplierList',
-    icon: icon('ic_list'),
+    icon: icon('ic_supplier'),
   },
 
 
 //supplier
-  {
-    title: 'Supply History',
-    path: '/supplier/SupplyHistory',
-    icon: icon('ic_list'),
-  },
+  // {
+  //   title: 'Supply History',
+  //   path: '/supplier/SupplyHistory',
+  //   icon: icon('ic_supplier'),
+  // },
 
 //order
   {
@@ -78,13 +78,13 @@ const navConfig = [
   {
     title: 'Delivery Guys',
     path: '/deliver/DeliveryGuy',
-    icon: icon('ic_list'),
+    icon: icon('ic-delivery'),
   },
 
   {
     title: 'Delivery Orders',
     path: '/deliver/viewOrder',
-    icon: icon('ic_list'),
+    icon: icon('ic_deviver_order'),
   },
 
   //cus

@@ -113,8 +113,21 @@ export default function AllProducts({setId}){
     return(
         <div className="container">
             <h1>All products</h1>
-            <button className="btn btn-primary" onClick={()=> navigate("add")}>Add New</button> <span>  </span>
-            <button className="btn btn-primary" onClick={() => exportPDF()}>Generate Report</button>
+            
+            <div className="row g-3 ">
+                <div className="col-md-8">
+                    <button className="btn btn-primary" onClick={()=> navigate("add")}>Add New</button> <span>  </span>
+                    <button className="btn btn-primary" onClick={() => exportPDF()}>Generate Report</button>
+                </div>
+                <div className="col-md-4">
+                    <form className="d-flex">
+                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={e => setQuery(
+                            e.target.value
+                        )}/>
+                        <button className="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
             {/* <table className="table table-success table-striped" style={{fontSize : "32px"}} >
                         
                         <th>Product name</th>

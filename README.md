@@ -1,10 +1,13 @@
-Please go under edit and edit this file as needed for your project
-
 # Project Name - Mobile-Store-Management-System
 
-### Group Leader - Wishvajith.S.A.S 
-### Member 2 - Rathnayake M.D.M
+### Member 1 - Rathnayake M.D.M
+### Member 2 - Wishvajith.S.A.S 
 ### Member 3 - Isheni M.A. K 
+### Member 4 - L.A.I Kumara
+### Member 5 - A.M.Y.S Abeykoon
+### Member 6 - M.G.T. Rashmika
+### Member 7 - Abisheka J.M.M
+### Member 8 - Balamanage T.G
 
 
 #### Brief Description of Project - 
@@ -16,7 +19,10 @@ Customer need to register before mading any purchases by proving details. After 
 
 
 
-#### Technologies used - MERN stack
+#### Technologies used - MERN stack, Scrum
+
+### Scrennshots -->
+<img src = "">
 
 
 

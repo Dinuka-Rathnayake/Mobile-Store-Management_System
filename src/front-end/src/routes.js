@@ -66,7 +66,7 @@ export default function Router() {
       path: '/product',
       element: <DashboardLayout />,
       children: [
-        // { element: <Navigate to="/product/app" />},
+        // { element: <Navigate to="/product/app" />, index : true},
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'all', element: <AllProducts setId={setId} /> },
         { path: 'all/add', element: <AddProducts /> },
@@ -98,7 +98,7 @@ export default function Router() {
       path: '/employee',
       element: <DashboardLayout />,
       children: [
-        { element: <Navigate to="/dashboard/app" />, index: true },
+        { element: <Navigate to="/dashboard/app" />},
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'EmployeeListPage', element: <EmployeeList /> },
         { path: 'CalculateSalaryPage', element: <CalculateSalaryPage/> },
@@ -188,7 +188,7 @@ export default function Router() {
       path: '/inquire',
       element: <DashboardLayout />,
       children: [
-        { element: <Navigate to="/dashboard/app" />, index: true },
+        { element: <Navigate to="/dashboard/app" /> },
 
         { path: 'app', element: <DashboardAppPage /> },
         
@@ -208,19 +208,19 @@ export default function Router() {
 
 
     // {
-    //   path: '/login',
+    //   path: 'admin/login',
     //   element: <LoginPage />,
-    //   element: <Navigate to="/login" />,index: true
+    //   element: <Navigate to="admin/login" />
     // },
     {
       element: <LoginPage />,
       element: <SimpleLayout />,
       children: [
-        {element: <Navigate to="/login" />,index: true},
-        { element: <Navigate to="/product/app" />,  },
+        {element: <Navigate to="admin/login" />,index: true},
+        // { element: <Navigate to="/product/app" />,  },
         { path: '404', element: <Page404 /> },
         { path: '*', element: <Navigate to="/404" /> },
-        {path: '/login', element : <LoginPage />},
+        {path: 'admin/login', element : <LoginPage />},
       ],
     },
     {

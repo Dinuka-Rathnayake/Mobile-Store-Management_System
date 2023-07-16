@@ -48,7 +48,7 @@ const navConfig = [
   {
     title: 'Salary',
     path: '/employee/CalculateSalaryPage',
-    icon: icon('ic_list'),
+    icon: icon('ic_salary'),
   },
 
 
@@ -71,7 +71,7 @@ const navConfig = [
   {
     title: 'Order',
     path: '/order/orders',
-    icon: icon('ic_list'),
+    icon: icon('ic_order'),
   },
 
 //deliver
@@ -115,8 +115,8 @@ const navConfig = [
   //   icon: icon('ic_disabled'),
   // },
   {
-    title: 'login',
-    path: '/login',
+    title: 'adminlogin',
+    path: 'admin/login',
     icon: icon('ic_lock'),
   },
 

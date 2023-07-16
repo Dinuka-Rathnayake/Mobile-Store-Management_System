@@ -88,11 +88,11 @@ const navConfig = [
   },
 
   //cus
-  {
-    title: 'Add inquiry',
-    path: '/inquire/Addinquiry',
-    icon: icon('ic_list'),
-  },
+  // {
+  //   title: 'Add inquiry',
+  //   path: '/inquire/Addinquiry',
+  //   icon: icon('ic_list'),
+  // },
  
 
   {
@@ -101,11 +101,11 @@ const navConfig = [
     icon: icon('ic_list'),
   }, 
     
-  {
-    title: 'respond inquiry',
-    path: '/inquire/viewCustomerInquiry',
-    icon: icon('ic_list'),
-  },
+  // {
+  //   title: 'respond inquiry',
+  //   path: '/inquire/viewCustomerInquiry',
+  //   icon: icon('ic_list'),
+  // },
 
 
 

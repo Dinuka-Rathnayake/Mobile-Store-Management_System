@@ -143,14 +143,10 @@ import "jspdf-autotable";
 
                                 <td className="col">
                                 <p key={post._id}>
-                                        
-                                        
                                         <button type="button" class="btn btn-primary" onClick={(e) => routeChange(post._id, e)} style={{fontSize : "16px"}} >Edit</button>
                                         
                                         <span>   </span>
-                                        <button type="button" class="btn btn-danger"  onClick={(e) => deleteRow(post._id, e)} >Delete</button>
-
-                                        
+                                        <button type="button" class="btn btn-danger"  onClick={(e) => deleteRow(post._id, e)} >Delete</button>   
                                     </p>     
                                 </td>
 

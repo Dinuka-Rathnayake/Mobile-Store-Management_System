@@ -103,7 +103,7 @@ import "jspdf-autotable";
 
        </div>
 
-       <table className="table table-cart table-mobile" style={{fontSize : "32px"}} >
+       <table className="table table-cart table-mobile" style={{fontSize : "30px"}} >
                     <thead>
                         <tr>
                             <th>#</th>

@@ -1,4 +1,4 @@
-# Project Name - Mobile-Store-Management-System
+# Happy Mobile - Mobile-Store-Management-System
 
 ### Member 1 - Rathnayake M.D.M
 ### Member 2 - Wishvajith.S.A.S 
@@ -22,7 +22,11 @@ Customer need to register before mading any purchases by proving details. After 
 #### Technologies used - MERN stack, Scrum
 
 ### Scrennshots -->
-<img src = "">
+<img src = "Mobile-Store-Management_System/src/front-end/public/assets/images/admin-happy-mobile/loginPage.png"> </br>
+
+<img src = "Mobile-Store-Management_System/src/front-end/public/assets/images/admin-happy-mobile/AdminDashbord.png"> </br>
+
+<img src = "Mobile-Store-Management_System/src/front-end/public/assets/images/admin-happy-mobile/ProductPage.png">
 
 
 

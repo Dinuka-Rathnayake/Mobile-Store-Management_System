@@ -1,4 +1,4 @@
-// {
+{
 //   "root": true,
 //   "env": {
 //     "browser": true,
@@ -10,11 +10,11 @@
 //     "plugin:react-hooks/recommended",
 //     "prettier"
 //   ],
-//   "plugins": [
-//     "react",
-//     "react-hooks",
-//     "prettier"
-//   ],
+ "plugins": [
+    "react",
+    "react-hooks",
+    "prettier"
+  ],
 //   "parser": "@babel/eslint-parser",
 //   "parserOptions": {
 //     "ecmaVersion": 8,
@@ -78,4 +78,4 @@
 //       }
 //     ]
 //   }
-// }
+}

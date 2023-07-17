@@ -83,94 +83,87 @@ import Swal from 'sweetalert2'
     return(
         <div className="container">
             <div class="form-out">
-       <h2>All Incomes</h2>
+                <h2>All Incomes</h2>
 
-       {/* <button className="btn btn-primary" onClick={()=> navigate("add")}>Add New</button> <span></span>
-       <button className="btn btn-primary" onClick={() => exportPDF()}>Generate Report</button> */}
-       <div className="row g-3 ">
-            <div className="col-md-8">
-                <button className="btn btn-primary" onClick={()=> navigate("add")}>Add New</button><span>  </span>
-                <button type="button" className="btn btn-primary" onClick={() => exportPDF()}>Generate Report</button>
-                
-            </div>
-            
-            <div className="col-md-4">
-                <form className="d-flex">
-                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={e => setQuery(
-                        e.target.value
-                    )}/>
-                    <button className="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+                {/* <button className="btn btn-primary" onClick={()=> navigate("add")}>Add New</button> <span></span>
+                <button className="btn btn-primary" onClick={() => exportPDF()}>Generate Report</button> */}
+                <div className="row g-3 ">
+                    <div className="col-md-8">
+                        <button className="btn btn-primary" onClick={()=> navigate("add")}>Add New</button><span>  </span>
+                        <button type="button" className="btn btn-primary" onClick={() => exportPDF()}>Generate Report</button>
+                        
+                    </div>
+                    
+                    <div className="col-md-4">
+                        <form className="d-flex">
+                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={e => setQuery(
+                                e.target.value
+                            )}/>
+                            <button className="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
 
-       </div>
-       <table className="table table-cart table-mobile" style={{fontSize : "32px"}} >
-                        <th>BillID</th>
-                        <th>Date</th>
-                        <th>Payee</th>
-                        <th>Amount</th>
-                        <th>Description</th>
-                        <th>Action</th>
-
-                        <tr style={{fontSize : "20px"}}>
-                            <td>
-                                {incomes.map(post => ( 
-                                    <p key={post._id}>{post.billID}</p>
-                                ))}
-                            </td>
-
-                            <td>
-                                {incomes.map(post => ( 
-                                    <p key={post._id}>{post.date}</p>
-                                ))}
-                            </td>
-                                
-                            <td>
-                                {incomes.map(post => ( 
-                                    <p key={post._id}>{post.payee}</p>
-                                ))}
-                                
-                            </td>
-
-                            <td>
-                                {incomes.map(post => ( 
-                                    <p key={post._id}>{post.amount}</p>
-                                ))}
-                                
-                            </td>
-
-                            <td>
-                                {incomes.map(post => ( 
-                                    <p key={post._id}>{post.description}</p>
-                                ))}
-                                
-                            </td>
-
-
-                            <td>
-                                 {incomes.map(post => ( 
-                                    <p key={post._id}>
-                                        
-                                        
-                                        <button type="button" class="btn btn-primary" onClick={(e) => routeChange(post._id, e)}  >Edit</button>
-                                        
-                                        <span>   </span>
-                                        <button type="button" class="btn btn-danger"  onClick={(e) => deleteRow(post._id, e)} >Delete</button>
-
-                                        
-                                    </p>
-
-                                ))}
+                </div>
+                <table className="table table-cart table-mobile" style={{fontSize : "32px"}} >
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Payee</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                            <th>Action</th>
                             
-                            </td>
-
                         </tr>
-                    </table>
+                    </thead>
+
+                    <tbody>
+                        {incomes.map(post => ( 
+                            // <p key={post._id}>{post.billID}</p>
+
+                            <tr style={{fontSize : "20px"}}>
+                                <th className="row">
+                                    <p key={post._id}>{post.billID}</p>
+                                </th>
+
+                                <td className="col">
+                                    <p key={post._id}>{post.date}</p>
+                                </td>
+
+                                <td className="col">
+                                    <p key={post._id}>{post.payee}</p>
+                                </td>
+
+                                <td className="col">
+                                    <p key={post._id}>{post.amount}</p>
+                                </td>
+
+                                <td className="col">
+                                    <p key={post._id}>{post.description}</p>
+                                </td>
+
+                                <td className="col">
+                                        <p key={post._id}>    
+                                            <button type="button" class="btn btn-primary" onClick={(e) => routeChange(post._id, e)}  >Edit</button>
+                                            
+                                            <span>   </span>
+                                            <button type="button" class="btn btn-danger"  onClick={(e) => deleteRow(post._id, e)} >Delete</button>
+
+                                            
+                                        </p>
+                                </td>
+
+
+                            </tr>
+                            
+                        ))}     
+                    </tbody>    
+                </table>
 
 
 
 
-        </div>
+            </div>
         </div>
     )
 

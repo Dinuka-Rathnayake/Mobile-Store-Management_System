@@ -125,19 +125,19 @@ function Orders() {
    <p>Loading...</p>
  ) : (
 <table className="table table-cart table-mobile">
-<thead>
-<tr>
-<th>Name</th>
-<th>Address</th>
-<th>Email</th>
-<th>Phone</th>
-<th>Product</th>
-<th>Price</th>
-<th>Date</th>
-<th>Total</th>
-<th />
-</tr>
-</thead>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Date</th>
+      <th>Total</th>
+      <th />
+    </tr>
+  </thead>
 <tbody>
 {orders.map((order) => {
          const item = items.find((item) => item._id === order.item);

@@ -138,35 +138,35 @@ function Orders() {
       <th />
     </tr>
   </thead>
-<tbody>
-{orders.map((order) => {
-         const item = items.find((item) => item._id === order.item);
-         return (
-<tr>
-<td className="price-col">{order.first_name}</td>
-<td className="price-col">{order.address}</td>
-<td className="price-col">{order.email}</td>
-<td className="price-col">{order.phone}</td>
-<td className="product-col">{item ? item.name : ""}</td>
+  <tbody>
+    {orders.map((order) => {
+            const item = items.find((item) => item._id === order.item);
+            return (
+    <tr>
+      <td className="price-col">{order.first_name}</td>
+      <td className="price-col">{order.address}</td>
+      <td className="price-col">{order.email}</td>
+      <td className="price-col">{order.phone}</td>
+      <td className="product-col">{item ? item.name : ""}</td>
 
-<td className="price-col">Rs{item ? item.price : ""}</td>
-<td className="price-col">{new Date(order.createdAt).toLocaleString('en-US', { timeZone: 'Asia/Colombo' })}</td>
+      <td className="price-col">Rs{item ? item.price : ""}</td>
+      <td className="price-col">{new Date(order.createdAt).toLocaleString('en-US', { timeZone: 'Asia/Colombo' })}</td>
 
-<td className="price-col">Rs{item ? item.price : ""}</td>
-<td className="remove-col">
- <button className="btn-remove" onClick={() => handleRemoveOrder(order._id)}>
-   <i className="icon-close" />
- </button>
- <Link to={`admin/orders/${order._id}/edit`} className="btn btn-warning mr-2"><button className="btn btn-danger" >
-  <i className="icon-close" />
- </button>
-</Link>
-  
-</td>
-</tr>
-         );
-          })}
-</tbody>
+      <td className="price-col">Rs{item ? item.price : ""}</td>
+      <td className="remove-col">
+      <button className="btn-remove" onClick={() => handleRemoveOrder(order._id)}>
+        <i className="icon-close" />
+      </button>
+      <Link to={`admin/orders/${order._id}/edit`} className="btn btn-warning mr-2"><button className="btn btn-danger" >
+        <i className="icon-close" />
+      </button>
+      </Link>
+      
+      </td>
+    </tr>
+            );
+              })}
+  </tbody>
 </table>
 )}
  </div>

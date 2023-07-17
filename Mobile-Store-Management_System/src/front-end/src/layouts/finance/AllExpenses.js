@@ -103,7 +103,78 @@ import "jspdf-autotable";
 
        </div>
 
-       <table className="table table-success table-striped" style={{fontSize : "32px"}} >
+       <table className="table table-cart table-mobile" style={{fontSize : "32px"}} >
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Payee</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                            
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {expenses.map(post => ( 
+                            // <p key={post._id}>{post.billID}</p>
+
+                            <tr style={{fontSize : "20px"}}>
+                                <th className="row">
+                                    <p key={post._id}>{post.billID}</p>
+                                </th>
+
+                                <td className="col">
+                                    <p key={post._id}>{post.date}</p>
+                                </td>
+
+                                <td className="col">
+                                    <p key={post._id}>{post.payee}</p>
+                                </td>
+
+                                <td className="col">
+                                    <p key={post._id}>{post.amount}</p>
+                                </td>
+
+                                <td className="col">
+                                    <p key={post._id}>{post.description}</p>
+                                </td>
+
+                                <td className="col">
+                                <p key={post._id}>
+                                        
+                                        
+                                        <button type="button" class="btn btn-primary" onClick={(e) => routeChange(post._id, e)} style={{fontSize : "16px"}} >Edit</button>
+                                        
+                                        <span>   </span>
+                                        <button type="button" class="btn btn-danger"  onClick={(e) => deleteRow(post._id, e)} >Delete</button>
+
+                                        
+                                    </p>     
+                                </td>
+
+
+                            </tr>
+                            
+                        ))}     
+                    </tbody>    
+                </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       {/* <table className="table table-success table-striped" style={{fontSize : "32px"}} >
                         <th>BillID</th>
                         <th>Date</th>
                         <th>Payee</th>
@@ -164,7 +235,7 @@ import "jspdf-autotable";
                             </td>
 
                         </tr>
-                    </table>
+                    </table> */}
 
 
 

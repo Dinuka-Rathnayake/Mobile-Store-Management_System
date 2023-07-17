@@ -1,4 +1,4 @@
-# Project Name - Mobile-Store-Management-System
+# Happy Mobile - Mobile-Store-Management-System
 
 ### Member 1 - Rathnayake M.D.M
 ### Member 2 - Wishvajith.S.A.S 

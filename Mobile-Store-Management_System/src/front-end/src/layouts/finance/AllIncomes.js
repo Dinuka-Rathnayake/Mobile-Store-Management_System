@@ -104,7 +104,7 @@ import Swal from 'sweetalert2'
             </div>
 
        </div>
-       <table className="table table-success table-striped" style={{fontSize : "32px"}} >
+       <table className="table table-cart table-mobile" style={{fontSize : "32px"}} >
                         <th>BillID</th>
                         <th>Date</th>
                         <th>Payee</th>

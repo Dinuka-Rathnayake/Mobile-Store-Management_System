@@ -1,0 +1,52 @@
+/* add products */
+h2{
+    color: rgb(6, 6, 6);  
+  }
+  
+  .form-out{
+    padding: 30px;
+    /* background-color: #c6dbed; */
+  }
+  
+  .form-label{
+    font-weight: bold;
+  }
+
+  .form-error{
+    color:red;
+  }
+   .button.btn btn-primary{
+    border-radius: 12px;
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    height: 1cm;
+  } 
+  .table{
+  width:100%
+  }
+  .th{
+    width:100%
+  }
+  .tr{
+    width:100%
+  }
+/*login css*/
+  @media all and (min-width: 480px) {
+    .Login {
+        padding: 60px 0;
+        /* background-color: #65a2e9; */
+    }
+    .Login form {
+        margin: 0 auto;
+        max-width: 320px;
+       
+    }
+    
+}

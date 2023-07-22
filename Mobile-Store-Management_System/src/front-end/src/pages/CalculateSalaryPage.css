@@ -1,0 +1,19 @@
+.f10{
+    background-color: rgb(206, 39, 39);
+    border-color: #000002;
+    width: 303px;
+    height: 77px;
+    margin-top: -152%;
+    margin-left: 69%;
+    position: relative;
+    top: 6px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 10px;
+    font-size: 41px;
+    font-weight: 900;
+    text-decoration: underline;
+}

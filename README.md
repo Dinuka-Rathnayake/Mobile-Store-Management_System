@@ -26,7 +26,9 @@ Customer need to register before mading any purchases by proving details. After 
 
 <img src = "Mobile-Store-Management_System/src/front-end/public/assets/images/admin-happy-mobile/AdminDashbord.png"> </br>
 
-<img src = "Mobile-Store-Management_System/src/front-end/public/assets/images/admin-happy-mobile/ProductPage.png">
+<img src = "Mobile-Store-Management_System/src/front-end/public/assets/images/admin-happy-mobile/ProductPage.png"> </br>
+
+<img src = "Mobile-Store-Management_System/src/front-end/public/assets/images/admin-happy-mobile/incomePage.png">
 
 
 

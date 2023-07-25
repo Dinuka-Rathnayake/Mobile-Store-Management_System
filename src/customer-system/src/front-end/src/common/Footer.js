@@ -11,13 +11,13 @@ function Footer (){
       <div className="row">
         <div className="col-sm-6 col-lg-3">
           <div className="widget widget-about">
-            <img
+            {/* <img
               src="assets/images/demos/demo-4/logo-footer.png"
               className="footer-logo"
               alt="Footer Logo"
               width={105}
               height={25}
-            />
+            /> */}
             <p>
               Praesent dapibus, neque id cursus ucibus, tortor neque egestas
               augue, eu vulputate magna eros eu erat.{" "}
@@ -113,6 +113,11 @@ function Footer (){
           {/* End .widget */}
         </div>
         {/* End .col-sm-6 col-lg-3 */}
+
+
+
+
+        
       </div>
       {/* End .row */}
     </div>

@@ -95,7 +95,8 @@ router.route("/update/:id").put(async (req, res) =>{
     const quantity = req.body.product_stock;
     const weight = Number(req.body.product_weight);
     const imgUrl = req.body.imgUrl;
-
+    const mainCategory = req.body.main_category;
+    const subCategory = req.body.sub_category;
     
     // console.dir(names);
 
@@ -107,6 +108,8 @@ router.route("/update/:id").put(async (req, res) =>{
         quantity,
         weight,
         imgUrl,
+        mainCategory,
+        subCategory
         
         
     }

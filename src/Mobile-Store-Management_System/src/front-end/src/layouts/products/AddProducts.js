@@ -72,7 +72,7 @@ export default function AddProducts(){
             break;
         // default:
           // code block
-      }
+    }
 
     //create addfunction
     function sendData(e) {
@@ -86,12 +86,12 @@ export default function AddProducts(){
         //validation part
         if(
             product_name.length==0||product_description.length==0||product_stock.length==0
-            ||product_price1.length==0||imgUrl
+            ||product_price1.length==0||imgUrl||main_category||sub_category
             ){
             setError(true)
         }
 
-        if(product_name&&product_description&&product_stock&&product_price1&&imgUrl)
+        if(product_name&&product_description&&product_stock&&product_price1&&imgUrl&&main_category&&sub_category)
         {
         console.log("name: ",product_name,"\ndescription: ",product_description)
 
@@ -241,7 +241,7 @@ export default function AddProducts(){
                             }} />
                         </div>
 
-                        {/* Main category */}
+                        {/* Main category
                         <div className="col-md-6">
                             <label for="product_price1" className="form-label">Main category </label> <br></br>
                             {error&&product_price1.length<=0?
@@ -253,13 +253,13 @@ export default function AddProducts(){
                         </div>
 
                         {/* sub category */}
-                        <div className="col-md-6">
+                        {/* <div className="col-md-6">
                             <label for="product_weight" className="form-label">Sub Category</label>
                             
                             <input type="text" className="form-control" id="product_weight" placeholder="enter sub category.." onChange={(e) => {
                                 setSubCategory(e.target.value);
                             }} />
-                        </div> 
+                        </div>  */}
 
 
 
@@ -267,18 +267,14 @@ export default function AddProducts(){
                         {/* Main category */}
                         <div className="col-md-6">
                             <label for="product_price1" className="form-label">Main category </label> <br></br>
-                            {error&&product_price1.length<=0?
-                                <label className="form-error">*Product price can't be empty</label>:""
+                            {error&&main_category.length<=0?
+                                <label className="form-error">*main category can't be empty</label>:""
                             }
 
-                            
-
-                            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example"
+                            <select className="form-select form-select-md mb-3" aria-label=".form-select-lg example"
                                 onChange={(e) => {
                                     setMainCategory(e.target.value);
 
-                                    
-   
                                 }}
                             >
                                 <option selected>-- Open this select menu --</option>
@@ -292,15 +288,18 @@ export default function AddProducts(){
 
                         {/* sub category */}
                         <div className="col-md-6">
-                            <label for="product_weight" className="form-label">Sub Category</label>
+                            <label for="product_weight" className="form-label">Sub Category</label><br></br>
+                            {error&&sub_category.length<=0?
+                                <label className="form-error">*sub category can't be empty</label>:""
+                            }
 
-                            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example"
+                            <select className="form-select form-select-md mb-3" aria-label=".form-select-lg example"
                                 onChange={(e) => {
                                     setSubCategory(e.target.value);
                                 }}
                             >
                                 
-                                <option selected>Open this select menu</option>
+                                <option selected>-- Open this select menu --</option>
                                 {subCategoryOptions.map((itemName, index) => (
                                     <option key={index} value={itemName}>
                                         {itemName}

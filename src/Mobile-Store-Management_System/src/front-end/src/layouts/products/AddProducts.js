@@ -19,6 +19,8 @@ export default function AddProducts(){
     const [product_stock, setProductStock] = useState("");
     const [product_weight, setProductWeight] = useState("");
     const [product_price1, setProductPrice1] = useState("");
+    const [main_category, setMainCategory] = useState("");
+    const [sub_category, setSubCategory] = useState("");
 
     const [file, setFile] = useState();
     const [imgUrl, setImgUrl] = useState("");
@@ -186,6 +188,7 @@ export default function AddProducts(){
                             }} />
                         </div> 
 
+                        {/* weight     */}
                         <div className="col-md-6">
                             <label for="product_weight" className="form-label">Product weight</label>
                             
@@ -194,17 +197,8 @@ export default function AddProducts(){
                             }} />
                         </div> 
 
-                       
-
-                        
-
-                        
-
-                        
-                        
-
-                        
-                        <div className="col-md-4">
+                        {/* price */}
+                        <div className="col-md-6">
                             <label for="product_price1" className="form-label">Product Price </label> <br></br>
                             {error&&product_price1.length<=0?
                             <label className="form-error">*Product price can't be empty</label>:""
@@ -214,6 +208,33 @@ export default function AddProducts(){
                             }} />
                         </div>
 
+                        {/* Main category */}
+                        <div className="col-md-6">
+                            <label for="product_price1" className="form-label">Main category </label> <br></br>
+                            {error&&product_price1.length<=0?
+                            <label className="form-error">*Product price can't be empty</label>:""
+                            }
+                            <input type="number" className="form-control" id="product_price1" placeholder="enter main category.." onChange={(e) => {
+                                setMainCategory(e.target.value);
+                            }} />
+                        </div>
+
+                        {/* sub category */}
+                        <div className="col-md-6">
+                            <label for="product_weight" className="form-label">sub category</label>
+                            
+                            <input type="number" className="form-control" id="product_weight" placeholder="enter sub category.." onChange={(e) => {
+                                setSubCategory(e.target.value);
+                            }} />
+                        </div> 
+
+                        
+
+
+                        
+
+
+                        {/* discription     */}
                         <div className="col-md-6">
                         <label class="form-check-label" for="productDescriptionTextArea">Product Description</label> <br></br>
                         {error&&product_description.length<=0?
@@ -223,6 +244,10 @@ export default function AddProducts(){
                                 setProductDescription(e.target.value);
                             }}></textarea>
                         </div>
+
+
+                        
+
 
                         {/* <div className="col-md-6">
                             <label for="inlineRadioOptions" className="form-label">New Arrival  </label> <br></br>
@@ -251,8 +276,9 @@ export default function AddProducts(){
                                 }} />
                         </div> */}
                         
+                        {/* image */}
                         <div className="col-md-6">
-                            <label for="productImage" className="form-label">Product Image <span className="warning-additional">(1600px * 900px)</span></label><br></br>
+                            <label for="productImage" className="form-label">Product Image <span className="warning-additional">(1600px * 900px)</span></label><br></br><br></br> 
                             {error&&imgUrl.length<=0?
                             <label className="form-error">*Product image didn't uploaded</label>:""
                             }

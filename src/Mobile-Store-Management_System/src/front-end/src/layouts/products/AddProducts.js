@@ -32,8 +32,11 @@ export default function AddProducts(){
     // const [product_sub_category2, setProductSubCategory2] = useState("");
     // const [product_new_arrival, setProductNewArrival] = useState("");
     // const [product_discount, setProductDiscount] = useState("");
-   
-    
+
+    console.log("Main category : " + main_category);
+    console.log("Sub category : " + sub_category);
+
+
     
 
     //navigate to another path
@@ -41,6 +44,7 @@ export default function AddProducts(){
 
     
 
+    var MainCategoryOptions = ["Courses here","Frontend Training","Backend Training","Java Training","Ethical Hacking"];
 
     //create addfunction
     function sendData(e) {
@@ -106,7 +110,7 @@ export default function AddProducts(){
             e.target.files[0]
         ); 
       }
-      console.log(file);
+    //   console.log(file);
 
     
     //upload image3
@@ -222,11 +226,53 @@ export default function AddProducts(){
 
                         {/* sub category */}
                         <div className="col-md-6">
-                            <label for="product_weight" className="form-label">sub category</label>
+                            <label for="product_weight" className="form-label">Sub Category</label>
                             
                             <input type="text" className="form-control" id="product_weight" placeholder="enter sub category.." onChange={(e) => {
                                 setSubCategory(e.target.value);
                             }} />
+                        </div> 
+
+
+
+
+                        {/* Main category */}
+                        <div className="col-md-6">
+                            <label for="product_price1" className="form-label">Main category </label> <br></br>
+                            {error&&product_price1.length<=0?
+                                <label className="form-error">*Product price can't be empty</label>:""
+                            }
+
+                            
+
+                            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example"
+                                onChange={(e) => {
+                                    setMainCategory(e.target.value);
+                                }}
+                            >
+                                <option selected>-- Open this select menu --</option>
+                                {MainCategoryOptions.map((itemName, index) => (
+                                    <option key={index} value={itemName}>
+                                        {itemName}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        {/* sub category */}
+                        <div className="col-md-6">
+                            <label for="product_weight" className="form-label">Sub Category</label>
+
+                            <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example"
+                                onChange={(e) => {
+                                    setSubCategory(e.target.value);
+                                }}
+                            >
+                                <option selected>Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
                         </div> 
 
                         

@@ -11,13 +11,13 @@ function Footer (){
       <div className="row">
         <div className="col-sm-6 col-lg-3">
           <div className="widget widget-about">
-            <img
+            {/* <img
               src="assets/images/demos/demo-4/logo-footer.png"
               className="footer-logo"
               alt="Footer Logo"
               width={105}
               height={25}
-            />
+            /> */}
             <p>
               Praesent dapibus, neque id cursus ucibus, tortor neque egestas
               augue, eu vulputate magna eros eu erat.{" "}
@@ -43,9 +43,7 @@ function Footer (){
               <li>
                 <a href="#">Our Services</a>
               </li>
-              <li>
-                <a href="#">How to shop on Molla</a>
-              </li>
+              
               <li>
                 <a href="faq.html">FAQ</a>
               </li>
@@ -72,15 +70,11 @@ function Footer (){
               <li>
                 <a href="#">Returns</a>
               </li>
-              <li>
-                <a href="#">Shipping</a>
-              </li>
+            
               <li>
                 <a href="#">Terms and conditions</a>
               </li>
-              <li>
-                <a href="#">Privacy Policy</a>
-              </li>
+              
             </ul>
             {/* End .widget-list */}
           </div>
@@ -102,9 +96,6 @@ function Footer (){
                 <a href="#">My Wishlist</a>
               </li>
               <li>
-                <a href="#">Track My Order</a>
-              </li>
-              <li>
                 <a href="#">Help</a>
               </li>
             </ul>
@@ -113,16 +104,21 @@ function Footer (){
           {/* End .widget */}
         </div>
         {/* End .col-sm-6 col-lg-3 */}
+
+
+
+
+        
       </div>
       {/* End .row */}
     </div>
     {/* End .container */}
   </div>
   {/* End .footer-middle */}
-  <div className="footer-bottom">
+  <div className="footer-bottom ">
     <div className="container">
       <p className="footer-copyright pl-6">
-        ITP_WE_20
+        All rights reserved | 2023 | Dinuka Rathnayake | +94 77 619 5029
       </p>
       {/* End .footer-copyright */}
       {/* <figure className="footer-payments">

@@ -14,7 +14,11 @@ router.route("/add").post((req, res) =>{
     const quantity = Number(req.body.product_stock);
     const weight = Number(req.body.product_weight);
     const imgUrl = req.body.imgUrl;
-    console.log("this is weight " + req.body.product_weight);
+
+    const mainCategory = req.body.main_category;
+    const subCategory = req.body.sub_category;
+
+    console.log("this is weight " + req.body.main_category);
 
     // const product_main_category = req.body.product_main_category;
     
@@ -36,6 +40,8 @@ router.route("/add").post((req, res) =>{
         quantity,
         weight,
         imgUrl,
+        mainCategory,
+        subCategory,
         
     })
     console.log(newProduct);
@@ -89,7 +95,8 @@ router.route("/update/:id").put(async (req, res) =>{
     const quantity = req.body.product_stock;
     const weight = Number(req.body.product_weight);
     const imgUrl = req.body.imgUrl;
-
+    const mainCategory = req.body.main_category;
+    const subCategory = req.body.sub_category;
     
     // console.dir(names);
 
@@ -101,6 +108,8 @@ router.route("/update/:id").put(async (req, res) =>{
         quantity,
         weight,
         imgUrl,
+        mainCategory,
+        subCategory
         
         
     }

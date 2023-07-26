@@ -42,10 +42,21 @@ const productSchema = new Schema({
     //imageUrL
     imgUrl : {
         type : String,
-        required: true,
+        // required: true,
     },
 
+    //category
+    mainCategory : {
+        type : String,
+        required : true
+    },
+    subCategory : {
+        type : String,
+        // default: [],
+    },
     updatedAt: Date,
+
+    
     
     // product_main_category : {
     //     type : String
@@ -126,6 +137,8 @@ const productSchema = new Schema({
 
 
 }, { timestamps: true })
+
+// 
 
 //added this line for solve error
 mongoose.models = {};

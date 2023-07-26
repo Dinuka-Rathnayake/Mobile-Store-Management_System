@@ -47,9 +47,32 @@ export default function AddProducts(){
     var MainCategoryOptions = ["Mobile Phones","Mobile Accessories","Electronic Items","Laptops"];
 
     //sub categories
+    var subCategoryOptions = []
     var MobilePhones = ["Samsung", "Apple", "Huwawi", "Google", "SONY", "HTC", "Other"]
     var MobileAccessories = ["HeadPhones", "Chargers", "Adapters", "Data Cables", "Other"]
     var ElectronicItems = ["Reading Lamps", "Cooling fans", "other"]
+    var Laptops = ["Singer", "Mac Book", "other"]
+
+    //choose relevent sub category array according to main category
+    switch(main_category) {
+        case "Mobile Phones":
+            subCategoryOptions = MobilePhones;
+            break;
+
+        case "Mobile Accessories":
+            subCategoryOptions = MobileAccessories;
+            break;
+
+        case "Electronic Items" : 
+            subCategoryOptions = ElectronicItems;  
+            break;
+
+        case "Laptops" : 
+            subCategoryOptions = Laptops;  
+            break;
+        // default:
+          // code block
+      }
 
     //create addfunction
     function sendData(e) {
@@ -253,6 +276,9 @@ export default function AddProducts(){
                             <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example"
                                 onChange={(e) => {
                                     setMainCategory(e.target.value);
+
+                                    
+   
                                 }}
                             >
                                 <option selected>-- Open this select menu --</option>
@@ -273,10 +299,13 @@ export default function AddProducts(){
                                     setSubCategory(e.target.value);
                                 }}
                             >
+                                
                                 <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                {subCategoryOptions.map((itemName, index) => (
+                                    <option key={index} value={itemName}>
+                                        {itemName}
+                                    </option>
+                                ))}
                             </select>
                         </div> 
 

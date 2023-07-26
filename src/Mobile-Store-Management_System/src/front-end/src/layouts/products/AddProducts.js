@@ -72,7 +72,8 @@ export default function AddProducts(){
             const newProduct = {
                 product_name, product_stock,
                 product_weight, product_description, 
-                imgUrl, product_price1
+                imgUrl, product_price1,
+                main_category, sub_category
                 
 
             }
@@ -214,7 +215,7 @@ export default function AddProducts(){
                             {error&&product_price1.length<=0?
                             <label className="form-error">*Product price can't be empty</label>:""
                             }
-                            <input type="number" className="form-control" id="product_price1" placeholder="enter main category.." onChange={(e) => {
+                            <input type="text" className="form-control" id="product_price1" placeholder="enter main category.." onChange={(e) => {
                                 setMainCategory(e.target.value);
                             }} />
                         </div>
@@ -223,7 +224,7 @@ export default function AddProducts(){
                         <div className="col-md-6">
                             <label for="product_weight" className="form-label">sub category</label>
                             
-                            <input type="number" className="form-control" id="product_weight" placeholder="enter sub category.." onChange={(e) => {
+                            <input type="text" className="form-control" id="product_weight" placeholder="enter sub category.." onChange={(e) => {
                                 setSubCategory(e.target.value);
                             }} />
                         </div> 

@@ -185,7 +185,7 @@ export default function AllProducts({setId}){
                             {
                                 products.map(post => ( 
                                     <div className="col-10 col-md-4 mt-5"> 
-                                        <div className="card" style={{ width: "18rem" }}>
+                                        <div className="card h-100" style={{ width: "18rem" }}>
                                              <img src={post.imgUrl} className="card-img-top" alt="not found" />
                                             <div className="card-body">
                                                 <h5 className="card-title">

@@ -55,25 +55,25 @@ const Home = ()=> {
           className="intro-slide"
           style={{
             backgroundImage:
-              "url(assets/images/demos/demo-4/slider/slide-1.png)"
+              "url(assets/images/slide1.png)"
           }}
         >
           <div className="container intro-content">
             <div className="row justify-content-end">
               <div className="col-auto col-sm-7 col-md-6 col-lg-5">
-                <h3 className="intro-subtitle text-third">
+                <h1 className="intro-subtitle text-third">
                   Deals and Promotions
-                </h3>
+                </h1>
                 {/* End .h3 intro-subtitle */}
-                <h1 className="intro-title">Beats by</h1>
-                <h1 className="intro-title">Dre Studio 3</h1>
+                <h1 className="intro-title">BEST DEALS</h1>
+                <h3 className="intro-title">On Mobile Accessories</h3>
                 {/* End .intro-title */}
-                <div className="intro-price">
+                {/* <div className="intro-price">
                   <sup className="intro-old-price">320000</sup>
                   <span className="text-third">
                   299999<sup>.99</sup>
                   </span>
-                </div>
+                </div> */}
                 {/* End .intro-price */}
                 <a href="category.html" className="btn btn-primary btn-round">
                   <span>Shop More</span>
@@ -91,7 +91,7 @@ const Home = ()=> {
           className="intro-slide"
           style={{
             backgroundImage:
-              "url(assets/images/demos/demo-4/slider/slide-2.png)"
+              "url(assets/images/slide1.png)"
           }}
         >
           <div className="container intro-content">

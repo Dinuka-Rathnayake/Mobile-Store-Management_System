@@ -43,8 +43,13 @@ export default function AddProducts(){
     const navigate = useNavigate();
 
     
+    //main category
+    var MainCategoryOptions = ["Mobile Phones","Mobile Accessories","Electronic Items","Laptops"];
 
-    var MainCategoryOptions = ["Courses here","Frontend Training","Backend Training","Java Training","Ethical Hacking"];
+    //sub categories
+    var MobilePhones = ["Samsung", "Apple", "Huwawi", "Google", "SONY", "HTC", "Other"]
+    var MobileAccessories = ["HeadPhones", "Chargers", "Adapters", "Data Cables", "Other"]
+    var ElectronicItems = ["Reading Lamps", "Cooling fans", "other"]
 
     //create addfunction
     function sendData(e) {

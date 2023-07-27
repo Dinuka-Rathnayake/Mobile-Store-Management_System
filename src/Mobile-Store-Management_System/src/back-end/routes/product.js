@@ -52,16 +52,56 @@ router.route("/add").post((req, res) =>{
     }).catch((err) => {
         console.log(err);
     })
-})
+});
 
 //retreive data from db
 router.route("/").get((req, res) => {
     Product.find().then((products) =>{
         res.json(products)
+
     }).catch(() => {
         console.log(err);
     })
 })
+
+
+//test search api
+router.get("/search",async(req, res)=>{
+    try{
+        const query = req.query.q;
+        const searchRegex = new RegExp(query, "i");
+
+        const results = await Product.find({
+            $or: [{ name: searchRegex}],
+            // Add more fields in the $or array if needed for searching other fields
+          });
+        
+          res.json(results);
+
+        // res.status(200).json(response)
+        
+    }catch(err){
+        console.log(err);
+        res.status(500).json({error:true,message:"Internal Server Error"});
+    }
+
+
+    // let data = await Product.find(
+    //     {
+    //         "$or":[
+    //             {name:{$regex:".*"+req.body.key+".*"}}
+    //         ]
+    //     }
+    // )
+    // res.json("hii");
+
+    
+
+});
+
+
+
+
 
 //retreive data from specific id
 router.route("/get/:id").get(async(req, res) =>{
@@ -114,7 +154,6 @@ router.route("/update/:id").put(async (req, res) =>{
         
     }
     // console.log(updateProduct);
-    
     const update = await Product.findByIdAndUpdate(userId, updateProduct).then(() => { 
         res.status(200).send({status: "product updated"});
     }).catch((err) => {

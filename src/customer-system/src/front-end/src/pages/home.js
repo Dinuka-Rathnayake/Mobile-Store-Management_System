@@ -133,13 +133,13 @@ const Home = ()=> {
 
     {/* <div className="row text-center"> */}
                         
-                 <div className="container pr-5">
-                          <div className="row justify-content-center">
+                 <div className="container ">
+                          <div className="row row-cols-1 row-cols-md-3 g-4 "> {/*row justify-content-center*/}
                             {products.map(post => ( 
-                                <div className="col-10 col-md-4 mt-5 "> 
-                                    <div className="card" style={{ width: "18rem" }}>
+                                <div className="col"> 
+                                    <div className="card h-100 "  style={{ width: "25rem" }}>
                                          <img src={post.imgUrl} className="card-img-top" alt="image not found" onClick={()=> handleCardClick(post._id)} />
-                                        <div className="card-body">
+                                        <div className="card-body text-center" style={{ paddingLeft: "40px" }}>
                                             <h5 className="card-title">
                                                 <p style={{ fontWeight: 700, fontFamily: "'Poppins'" }} key={post._id}>{post.name}</p>
                                             </h5>
@@ -165,6 +165,12 @@ const Home = ()=> {
                                 </div>   
                             ))
                         } </div>
+
+
+
+
+
+                        
 
                         
                     

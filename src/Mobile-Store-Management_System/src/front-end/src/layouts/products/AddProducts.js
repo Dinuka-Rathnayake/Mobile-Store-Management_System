@@ -19,6 +19,8 @@ export default function AddProducts(){
     const [product_stock, setProductStock] = useState("");
     const [product_weight, setProductWeight] = useState("");
     const [product_price1, setProductPrice1] = useState("");
+    const [main_category, setMainCategory] = useState("");
+    const [sub_category, setSubCategory] = useState("");
 
     const [file, setFile] = useState();
     const [imgUrl, setImgUrl] = useState("");
@@ -30,15 +32,47 @@ export default function AddProducts(){
     // const [product_sub_category2, setProductSubCategory2] = useState("");
     // const [product_new_arrival, setProductNewArrival] = useState("");
     // const [product_discount, setProductDiscount] = useState("");
-   
-    
+
+    console.log("Main category : " + main_category);
+    console.log("Sub category : " + sub_category);
+
+
     
 
     //navigate to another path
     const navigate = useNavigate();
 
     
+    //main category
+    var MainCategoryOptions = ["Mobile Phones","Mobile Accessories","Electronic Items","Laptops"];
 
+    //sub categories
+    var subCategoryOptions = []
+    var MobilePhones = ["Samsung", "Apple", "Huwawi", "Google", "SONY", "HTC", "Other"]
+    var MobileAccessories = ["HeadPhones", "Chargers", "Adapters", "Data Cables", "Other"]
+    var ElectronicItems = ["Reading Lamps", "Cooling fans", "other"]
+    var Laptops = ["Singer", "Mac Book", "other"]
+
+    //choose relevent sub category array according to main category
+    switch(main_category) {
+        case "Mobile Phones":
+            subCategoryOptions = MobilePhones;
+            break;
+
+        case "Mobile Accessories":
+            subCategoryOptions = MobileAccessories;
+            break;
+
+        case "Electronic Items" : 
+            subCategoryOptions = ElectronicItems;  
+            break;
+
+        case "Laptops" : 
+            subCategoryOptions = Laptops;  
+            break;
+        // default:
+          // code block
+    }
 
     //create addfunction
     function sendData(e) {
@@ -52,12 +86,12 @@ export default function AddProducts(){
         //validation part
         if(
             product_name.length==0||product_description.length==0||product_stock.length==0
-            ||product_price1.length==0||imgUrl
+            ||product_price1.length==0||imgUrl||main_category||sub_category
             ){
             setError(true)
         }
 
-        if(product_name&&product_description&&product_stock&&product_price1&&imgUrl)
+        if(product_name&&product_description&&product_stock&&product_price1&&imgUrl&&main_category&&sub_category)
         {
         console.log("name: ",product_name,"\ndescription: ",product_description)
 
@@ -70,7 +104,8 @@ export default function AddProducts(){
             const newProduct = {
                 product_name, product_stock,
                 product_weight, product_description, 
-                imgUrl, product_price1
+                imgUrl, product_price1,
+                main_category, sub_category
                 
 
             }
@@ -103,7 +138,7 @@ export default function AddProducts(){
             e.target.files[0]
         ); 
       }
-      console.log(file);
+    //   console.log(file);
 
     
     //upload image3
@@ -186,6 +221,7 @@ export default function AddProducts(){
                             }} />
                         </div> 
 
+                        {/* weight     */}
                         <div className="col-md-6">
                             <label for="product_weight" className="form-label">Product weight</label>
                             
@@ -194,17 +230,8 @@ export default function AddProducts(){
                             }} />
                         </div> 
 
-                       
-
-                        
-
-                        
-
-                        
-                        
-
-                        
-                        <div className="col-md-4">
+                        {/* price */}
+                        <div className="col-md-6">
                             <label for="product_price1" className="form-label">Product Price </label> <br></br>
                             {error&&product_price1.length<=0?
                             <label className="form-error">*Product price can't be empty</label>:""
@@ -214,6 +241,80 @@ export default function AddProducts(){
                             }} />
                         </div>
 
+                        {/* Main category
+                        <div className="col-md-6">
+                            <label for="product_price1" className="form-label">Main category </label> <br></br>
+                            {error&&product_price1.length<=0?
+                            <label className="form-error">*Product price can't be empty</label>:""
+                            }
+                            <input type="text" className="form-control" id="product_price1" placeholder="enter main category.." onChange={(e) => {
+                                setMainCategory(e.target.value);
+                            }} />
+                        </div>
+
+                        {/* sub category */}
+                        {/* <div className="col-md-6">
+                            <label for="product_weight" className="form-label">Sub Category</label>
+                            
+                            <input type="text" className="form-control" id="product_weight" placeholder="enter sub category.." onChange={(e) => {
+                                setSubCategory(e.target.value);
+                            }} />
+                        </div>  */}
+
+
+
+
+                        {/* Main category */}
+                        <div className="col-md-6">
+                            <label for="product_price1" className="form-label">Main category </label> <br></br>
+                            {error&&main_category.length<=0?
+                                <label className="form-error">*main category can't be empty</label>:""
+                            }
+
+                            <select className="form-select form-select-md mb-3" aria-label=".form-select-lg example"
+                                onChange={(e) => {
+                                    setMainCategory(e.target.value);
+
+                                }}
+                            >
+                                <option selected>-- Open this select menu --</option>
+                                {MainCategoryOptions.map((itemName, index) => (
+                                    <option key={index} value={itemName}>
+                                        {itemName}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        {/* sub category */}
+                        <div className="col-md-6">
+                            <label for="product_weight" className="form-label">Sub Category</label><br></br>
+                            {error&&sub_category.length<=0?
+                                <label className="form-error">*sub category can't be empty</label>:""
+                            }
+
+                            <select className="form-select form-select-md mb-3" aria-label=".form-select-lg example"
+                                onChange={(e) => {
+                                    setSubCategory(e.target.value);
+                                }}
+                            >
+                                
+                                <option selected>-- Open this select menu --</option>
+                                {subCategoryOptions.map((itemName, index) => (
+                                    <option key={index} value={itemName}>
+                                        {itemName}
+                                    </option>
+                                ))}
+                            </select>
+                        </div> 
+
+                        
+
+
+                        
+
+
+                        {/* discription     */}
                         <div className="col-md-6">
                         <label class="form-check-label" for="productDescriptionTextArea">Product Description</label> <br></br>
                         {error&&product_description.length<=0?
@@ -223,6 +324,10 @@ export default function AddProducts(){
                                 setProductDescription(e.target.value);
                             }}></textarea>
                         </div>
+
+
+                        
+
 
                         {/* <div className="col-md-6">
                             <label for="inlineRadioOptions" className="form-label">New Arrival  </label> <br></br>
@@ -251,8 +356,9 @@ export default function AddProducts(){
                                 }} />
                         </div> */}
                         
+                        {/* image */}
                         <div className="col-md-6">
-                            <label for="productImage" className="form-label">Product Image <span className="warning-additional">(1600px * 900px)</span></label><br></br>
+                            <label for="productImage" className="form-label">Product Image <span className="warning-additional">(1600px * 900px)</span></label><br></br><br></br> 
                             {error&&imgUrl.length<=0?
                             <label className="form-error">*Product image didn't uploaded</label>:""
                             }

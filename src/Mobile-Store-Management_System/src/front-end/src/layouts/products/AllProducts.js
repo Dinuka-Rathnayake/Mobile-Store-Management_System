@@ -10,9 +10,16 @@ import EditProducts from "./EditProducts";
 
 export default function AllProducts({setId}){
 
+
     const [products, setProducts] = useState([]);
-    let ID ;
+    const [items, setItems] = useState(products);
     
+    // console.log(items)
+
+    const [searchQuery, setSearchQuery] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
+    let ID ;
+    // console.log(searchQuery)
 
     // navigate_another_component
     const navigate = useNavigate();
@@ -22,6 +29,7 @@ export default function AllProducts({setId}){
         function getStudents() {
             axios.get("http://localhost:8070/product/").then((res) =>{
                 setProducts(res.data);
+                setItems(res.data)
                  console.log(res.data);
             }).catch((err) => {
                 alert(err.message);
@@ -31,9 +39,50 @@ export default function AllProducts({setId}){
         
     }, [])
 
-    console.log(products)
     
+    
+    
+    
+    //search products
+    const handleSearch = (event) => {
 
+        setSearchQuery(event.target.value)
+        var searchword = event.target.value;
+        console.log("Search word =" + searchword)
+
+        var searchwordLenth = (parseInt(searchword.length)) 
+
+        console.log("search word length = "+ searchwordLenth)
+
+        if(searchwordLenth > 2){
+            
+                axios.get(`http://localhost:8070/product/search?q=${searchQuery}`).then((response)=>{
+                    setSearchResults(response.data);
+                    setItems(response.data)
+                }).catch ((error)=> {
+            console.error("Error searching:", error);
+            })
+        }
+        if(searchwordLenth < 2){
+            setItems(products)
+        }
+        else{
+            setItems(products)
+        }
+        
+        
+
+        
+        
+    };
+    // console.log(searchResults)
+    console.log("item length is "+items.length)
+    // if(searchQuery.length != 0 && items.length != 0){
+     
+    // }
+
+
+    
     // delete_product
     function deleteRow(id, e){
         e.preventDefault();
@@ -120,10 +169,13 @@ export default function AllProducts({setId}){
                 </div>
                 <div className="col-md-4">
                     <form className="d-flex">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={e => setQuery(
+                        {/* <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={e => setSearchQuery(
                             e.target.value
-                        )}/>
-                        <button className="btn btn-outline-success" type="submit">Search</button>
+                            
+                        )}/> */}
+                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={handleSearch}/>
+
+                        <button className="btn btn-outline-success" type="button" onClick={()=> handleSearch()} >Search</button>
                     </form>
                 </div>
             </div>
@@ -179,13 +231,13 @@ export default function AllProducts({setId}){
 
                         </tr>
             </table> */}
-
-                    <div className="row text-center">
+                    <div className="allDisplayProducts" id ="allDisplayProducts">
+                        <div className="row text-center">
                         
                             {
-                                products.map(post => ( 
+                                items.map(post => ( 
                                     <div className="col-10 col-md-4 mt-5"> 
-                                        <div className="card" style={{ width: "18rem" }}>
+                                        <div className="card h-100" style={{ width: "18rem" }}>
                                              <img src={post.imgUrl} className="card-img-top" alt="not found" />
                                             <div className="card-body">
                                                 <h5 className="card-title">
@@ -220,8 +272,8 @@ export default function AllProducts({setId}){
 
                             
                         
+                        </div>
                     </div>
-
                 </div>
         
         

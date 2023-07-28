@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -8,7 +8,7 @@ import { authActions } from "../reducers/auth";
 import { getAllCategory } from "../actions/category.action";
 import { getProductsBySlug } from "../actions/product.action";
 
-function Header({products,setProducts, items, setItems}) {
+function Header({products,setProducts, items, setItems, slidebarVisibility}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -24,7 +24,11 @@ function Header({products,setProducts, items, setItems}) {
     
   }, []);
 
-  
+  //take dropdown value
+  const handleListItemClick = (value) => {
+    var dropdownValue = value
+    console.log("dropDown value = "+ dropdownValue);
+  };
   
 
   
@@ -33,12 +37,12 @@ function Header({products,setProducts, items, setItems}) {
     let myCategories = [];
     for (let category of categories) {
       myCategories.push(
-        <li key={category.name}>
+        <li key={category.name} >
           {category.parentId ? (
-            <a href={`/${category.name}?cid=${category._id}`}>
+            <Link onClick={() => handleListItemClick(category.name)}>
               {" "}
               {category.name}{" "}
-            </a>
+            </Link>
           ) : (
             <span className="sf-with-ul">{category.name}</span>
           )}
@@ -64,20 +68,23 @@ function Header({products,setProducts, items, setItems}) {
     console.log("search word length = "+ searchwordLenth)
 
     if(searchwordLenth > 2){
-            
+      slidebarVisibility.style.display = 'none'; // Hide the div  
       axios.get(`http://localhost:8070/api/search?q=${searchQuery}`).then((response)=>{
         console.log(response.data)  
         // setItems(response.data)
         setProducts(response.data)
+        
       }).catch ((error)=> {
       console.error("Error searching:", error);
       })
     }
     if(searchwordLenth < 2){
       setProducts(items)
+      slidebarVisibility.style.display = 'block'; // Unhide the div  
   }
   else{
     setProducts(items)
+    
   }
   };
   

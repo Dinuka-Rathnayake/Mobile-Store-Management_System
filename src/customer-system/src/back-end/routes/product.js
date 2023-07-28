@@ -14,7 +14,7 @@ router.route("/products/getproducts").get((req, res) => {
     })
 })
 
-//test search api
+//get search api
 router.get("/search",async(req, res)=>{
     try{
         const query = req.query.q;
@@ -35,6 +35,8 @@ router.get("/search",async(req, res)=>{
     }
 
 });
+
+//get category click search
 
 
 

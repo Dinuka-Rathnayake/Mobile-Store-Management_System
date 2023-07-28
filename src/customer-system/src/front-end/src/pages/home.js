@@ -7,6 +7,8 @@ import { getApi } from "../utils/axios";
 
 const Home = ({products, setProducts, items, setItems})=> {
 
+  //take slidebar status
+  var slidebarVisibility = document.getElementById('slidebar');
   // const [products, setProducts] = useState([]);
   let ID ;
 
@@ -22,8 +24,9 @@ const Home = ({products, setProducts, items, setItems})=> {
         }).catch((err)=>{
             alert(err.message);
         })
-        
+         
     }
+    
     getProducts();
   },[])
   // console.log(products)
@@ -32,12 +35,21 @@ const Home = ({products, setProducts, items, setItems})=> {
     navigate(`/item/${id}`);
   }
 
+  
+    
+    
+  
+  
+  
+
+
+
     return(
       
         <>
- <Header products={products} setProducts={setProducts} items={items} setItems={setItems} />
-  <main className="main">
-    <div className="intro-slider-container mb-5">
+ <Header products={products} setProducts={setProducts} items={items} setItems={setItems} slidebarVisibility={slidebarVisibility}/>
+  <main className="main"> 
+    <div className="intro-slider-container mb-5" id="slidebar" style={{display: "block"}}>
       <div
         className="intro-slider owl-carousel owl-theme owl-nav-inside owl-light"
         data-toggle="owl"

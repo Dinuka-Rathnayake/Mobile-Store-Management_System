@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from './pages/home';
@@ -16,6 +16,8 @@ import EditOrder from './pages/admin/editOrders';
 
 
 function App(){
+  const [products, setProducts] = useState([]);
+  const [items, setItems] = useState(products);
 
     return(
   <div>
@@ -23,7 +25,7 @@ function App(){
           <Router>
           <CartContextProvider>
             <Routes>
-              <Route path="/" exact element={<Home />} />
+              <Route path="/" exact element={<Home products={products} setProducts={setProducts} items={items} setItems={setItems} />} />
               <Route path="/item/:id" element={<Item />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/signin-signup" element={<Login />} />

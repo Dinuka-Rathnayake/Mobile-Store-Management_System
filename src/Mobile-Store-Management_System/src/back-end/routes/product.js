@@ -14,7 +14,11 @@ router.route("/add").post((req, res) =>{
     const quantity = Number(req.body.product_stock);
     const weight = Number(req.body.product_weight);
     const imgUrl = req.body.imgUrl;
-    console.log("this is weight " + req.body.product_weight);
+
+    const mainCategory = req.body.main_category;
+    const subCategory = req.body.sub_category;
+
+    console.log("this is weight " + req.body.main_category);
 
     // const product_main_category = req.body.product_main_category;
     
@@ -36,6 +40,8 @@ router.route("/add").post((req, res) =>{
         quantity,
         weight,
         imgUrl,
+        mainCategory,
+        subCategory,
         
     })
     console.log(newProduct);
@@ -46,16 +52,44 @@ router.route("/add").post((req, res) =>{
     }).catch((err) => {
         console.log(err);
     })
-})
+});
 
 //retreive data from db
 router.route("/").get((req, res) => {
     Product.find().then((products) =>{
         res.json(products)
+
     }).catch(() => {
         console.log(err);
     })
 })
+
+
+//test search api
+router.get("/search",async(req, res)=>{
+    try{
+        const query = req.query.q;
+        const searchRegex = new RegExp(query, "i");
+
+        const results = await Product.find({
+            $or: [{ name: searchRegex}],
+            // Add more fields in the $or array if needed for searching other fields
+          });
+        
+          res.json(results);
+
+        // res.status(200).json(response)
+        
+    }catch(err){
+        console.log(err);
+        res.status(500).json({error:true,message:"Internal Server Error"});
+    }
+
+});
+
+
+
+
 
 //retreive data from specific id
 router.route("/get/:id").get(async(req, res) =>{
@@ -89,7 +123,8 @@ router.route("/update/:id").put(async (req, res) =>{
     const quantity = req.body.product_stock;
     const weight = Number(req.body.product_weight);
     const imgUrl = req.body.imgUrl;
-
+    const mainCategory = req.body.main_category;
+    const subCategory = req.body.sub_category;
     
     // console.dir(names);
 
@@ -101,11 +136,12 @@ router.route("/update/:id").put(async (req, res) =>{
         quantity,
         weight,
         imgUrl,
+        mainCategory,
+        subCategory
         
         
     }
     // console.log(updateProduct);
-    
     const update = await Product.findByIdAndUpdate(userId, updateProduct).then(() => { 
         res.status(200).send({status: "product updated"});
     }).catch((err) => {

@@ -71,6 +71,7 @@ app.use("/api",user);
 
 app.use("/product",productRouter);
 
+
 //finance
 app.use("/income",incomeRouter)
 app.use("/expense",expenseRouter)
@@ -96,7 +97,7 @@ app.use("/addinquiry",Addinquiryrouter);
 app.use("/customer",customerrouter);
 
 
-//repair
+
 
 
 

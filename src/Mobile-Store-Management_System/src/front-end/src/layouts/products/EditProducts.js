@@ -36,6 +36,44 @@ export default function EditProducts({selectId}){
     const [product, setProduct] = useState([]);
     const [updateProduct, setUpdateProduct] = useState([])
 
+    const [main_category, setMainCategory] = useState("");
+    const [sub_category, setSubCategory] = useState("");
+
+
+    //main category
+    var MainCategoryOptions = ["Mobile Phones","Mobile Accessories","Electronic Items","Laptops"];
+
+    //sub categories
+    var subCategoryOptions = []
+    var MobilePhones = ["Samsung", "Apple", "Huwawi", "Google", "SONY", "HTC", "Other"]
+    var MobileAccessories = ["HeadPhones", "Chargers", "Adapters", "Data Cables", "Other"]
+    var ElectronicItems = ["Reading Lamps", "Cooling fans", "other"]
+    var Laptops = ["Singer", "Mac Book", "other"]
+
+    //choose relevent sub category array according to main category
+    switch(main_category) {
+        case "Mobile Phones":
+            subCategoryOptions = MobilePhones;
+            break;
+
+        case "Mobile Accessories":
+            subCategoryOptions = MobileAccessories;
+            break;
+
+        case "Electronic Items" : 
+            subCategoryOptions = ElectronicItems;  
+            break;
+
+        case "Laptops" : 
+            subCategoryOptions = Laptops;  
+            break;
+        // default:
+          // code block
+    }
+
+
+
+
     //navigate to another path
     const navigate = useNavigate();
 
@@ -103,6 +141,9 @@ export default function EditProducts({selectId}){
             setProductPrice1(res.data.product.price);
             setProductWeight(res.data.product.weight);
 
+            setMainCategory(res.data.product.mainCategory);            
+            setSubCategory(res.data.product.subCategory);
+
             //product description
             setProductDescription(res.data.product.description);
             var productDescriptionTextArea = document.getElementById("productDescriptionTextArea");
@@ -147,7 +188,7 @@ export default function EditProducts({selectId}){
         const updateProduct = {
             product_name, product_stock,
             product_weight, product_description,
-            product_price1,imgUrl
+            product_price1,imgUrl,main_category,sub_category
             
         }
         setUpdateProduct(updateProduct);
@@ -258,6 +299,50 @@ export default function EditProducts({selectId}){
                                 setProductPrice1(e.target.value);
                             }} />
                         </div>
+
+                        {/* Main category */}
+                        <div className="col-md-6">
+                            <label for="product_price1" className="form-label">Main category </label> <br></br>
+                            {error&&main_category.length<=0?
+                                <label className="form-error">*main category can't be empty</label>:""
+                            }
+
+                            <select className="form-select form-select-md mb-3" aria-label=".form-select-lg example" value={main_category}
+                                onChange={(e) => {
+                                    setMainCategory(e.target.value);
+
+                                }}
+                            >
+                                <option selected>-- Open this select menu --</option>
+                                {MainCategoryOptions.map((itemName, index) => (
+                                    <option key={index} value={itemName}>
+                                        {itemName}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+
+                        {/* sub category */}
+                        <div className="col-md-6">
+                            <label for="product_weight" className="form-label">Sub Category</label><br></br>
+                            {error&&sub_category.length<=0?
+                                <label className="form-error">*sub category can't be empty</label>:""
+                            }
+
+                            <select className="form-select form-select-md mb-3" aria-label=".form-select-lg example" value={sub_category}
+                                onChange={(e) => {
+                                    setSubCategory(e.target.value);
+                                }}
+                            >
+                                
+                                <option selected>-- Open this select menu --</option>
+                                {subCategoryOptions.map((itemName, index) => (
+                                    <option key={index} value={itemName}>
+                                        {itemName}
+                                    </option>
+                                ))}
+                            </select>
+                        </div> 
 
                         
                         

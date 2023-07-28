@@ -5,9 +5,9 @@ import Footer from "../common/Footer"
 import Header from "../common/Header"
 import { getApi } from "../utils/axios";
 
-const Home = ()=> {
+const Home = ({products, setProducts, items, setItems})=> {
 
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   let ID ;
 
   // navigate_another_component
@@ -18,13 +18,14 @@ const Home = ()=> {
         getApi().get("api/products/getproducts").then((res)=>{
            // alert(res.data.length);
             setProducts(res.data);
+            setItems(res.data);
         }).catch((err)=>{
             alert(err.message);
         })
         
     }
     getProducts();
-},[])
+  },[])
   // console.log(products)
 
   const handleCardClick = (id) => {
@@ -34,7 +35,7 @@ const Home = ()=> {
     return(
       
         <>
- <Header />
+ <Header products={products} setProducts={setProducts} items={items} setItems={setItems} />
   <main className="main">
     <div className="intro-slider-container mb-5">
       <div

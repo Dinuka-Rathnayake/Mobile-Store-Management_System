@@ -8,19 +8,24 @@ import { authActions } from "../reducers/auth";
 import { getAllCategory } from "../actions/category.action";
 import { getProductsBySlug } from "../actions/product.action";
 
-function Header() {
+function Header({products,setProducts, items, setItems}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const category = useSelector((state) => state.category);
 
   //search
-  const [items, setItems] = useState("");
+  
+  const catchProducts = products
 
   useEffect(() => {
     dispatch(getAllCategory());
+    // items = products;
+    
   }, []);
 
+  
+  
 
   
 
@@ -51,6 +56,10 @@ function Header() {
     var searchQuery = e.target.value;
     console.log(searchQuery);
 
+    
+    // console.log(items)
+    // console.log("item length is "+items.length)
+
     var searchwordLenth = (parseInt(searchQuery.length)) 
     console.log("search word length = "+ searchwordLenth)
 
@@ -58,13 +67,20 @@ function Header() {
             
       axios.get(`http://localhost:8070/api/search?q=${searchQuery}`).then((response)=>{
         console.log(response.data)  
-        setItems(response.data)
+        // setItems(response.data)
+        setProducts(response.data)
       }).catch ((error)=> {
       console.error("Error searching:", error);
       })
     }
+    if(searchwordLenth < 2){
+      setProducts(items)
+  }
+  else{
+    setProducts(items)
+  }
   };
-  console.log("item length is "+items.length)
+  
 
   return (
     <header className="header header-intro-clearance header-4">

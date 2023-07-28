@@ -13,6 +13,8 @@ function Header({products,setProducts, items, setItems, slidebarVisibility}) {
   const navigate = useNavigate();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const category = useSelector((state) => state.category);
+  var SubCategoryName = "";
+  var mainCategoryName = "";
 
   //search
   
@@ -24,13 +26,17 @@ function Header({products,setProducts, items, setItems, slidebarVisibility}) {
     
   }, []);
 
-  //take dropdown value
-  const handleListItemClick = (value) => {
-    var dropdownValue = value
-    console.log("dropDown value = "+ dropdownValue);
+  //take sub category dropdown value
+  const getSubCategoryName = (value) => {
+    SubCategoryName = value
+    
   };
   
-
+  //take main category dropdown value
+  const getMainCategoryName = (value) => {
+    mainCategoryName = value
+    
+  };
   
 
   const renderCategories = (categories) => {
@@ -39,7 +45,7 @@ function Header({products,setProducts, items, setItems, slidebarVisibility}) {
       myCategories.push(
         <li key={category.name} >
           {category.parentId ? (
-            <Link onClick={() => handleListItemClick(category.name)}>
+            <Link onClick={() => getSubCategoryName(category.name)}>
               {" "}
               {category.name}{" "}
             </Link>
@@ -47,13 +53,35 @@ function Header({products,setProducts, items, setItems, slidebarVisibility}) {
             <span className="sf-with-ul">{category.name}</span>
           )}
           {category.children.length > 0 ? (
-            <ul>{renderCategories(category.children)}</ul>
+            <ul onClick={() => serchCategoryFunction(category.name)}>{renderCategories(category.children)}</ul>
           ) : null}
         </li>
       );
     }
     return myCategories;
   };
+
+
+  //sort related to category
+  function serchCategoryFunction(categoryName){
+
+    getMainCategoryName(categoryName);
+
+    console.log("Mainvalue = "+ mainCategoryName);
+    console.log("subvalue = "+ SubCategoryName);
+
+    axios.get(`http://localhost:8070/api/categorySort?p=${mainCategoryName}&q=${SubCategoryName}`).then((response)=>{
+        console.log(response.data)  
+        // setItems(response.data)
+        // slidebarVisibility.style.display = 'none'; // Hide the div 
+        // setProducts(response.data)
+        
+      }).catch ((error)=> {
+      console.error("Error searching:", error);
+      })
+
+  }
+
 
   //search function
   function serchFunction(e){

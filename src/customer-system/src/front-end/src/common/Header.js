@@ -73,7 +73,7 @@ function Header({products,setProducts, items, setItems, slidebarVisibility}) {
     axios.get(`http://localhost:8070/api/categorySort?p=${mainCategoryName}&q=${SubCategoryName}`).then((response)=>{
         console.log(response.data)  
         // setItems(response.data)
-        // slidebarVisibility.style.display = 'none'; // Hide the div 
+        slidebarVisibility.style.display = 'none'; // Hide the div 
         setProducts(response.data)
         
       }).catch ((error)=> {

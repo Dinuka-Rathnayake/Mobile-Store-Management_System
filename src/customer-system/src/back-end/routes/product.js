@@ -1,7 +1,7 @@
 //1.import packages
 const router = require("express").Router()
 const {Router} = require("express");
-let Product = require("../models/Product.js")
+let Product = require("../models/product.js")
 
 
 
@@ -13,6 +13,30 @@ router.route("/products/getproducts").get((req, res) => {
         console.log(err);
     })
 })
+
+//test search api
+router.get("/search",async(req, res)=>{
+    try{
+        const query = req.query.q;
+        const searchRegex = new RegExp(query, "i");
+
+        const results = await Product.find({
+            $or: [{ name: searchRegex}],
+            // Add more fields in the $or array if needed for searching other fields
+          });
+        
+          res.json(results);
+
+        // res.status(200).json(response)
+        
+    }catch(err){
+        console.log(err);
+        res.status(500).json({error:true,message:"Internal Server Error"});
+    }
+
+});
+
+
 
 //retreive data from specific id
 router.route("/products/ss/:id").get(async(req, res) =>{

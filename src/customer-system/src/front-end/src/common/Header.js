@@ -74,7 +74,7 @@ function Header({products,setProducts, items, setItems, slidebarVisibility}) {
         console.log(response.data)  
         // setItems(response.data)
         // slidebarVisibility.style.display = 'none'; // Hide the div 
-        // setProducts(response.data)
+        setProducts(response.data)
         
       }).catch ((error)=> {
       console.error("Error searching:", error);

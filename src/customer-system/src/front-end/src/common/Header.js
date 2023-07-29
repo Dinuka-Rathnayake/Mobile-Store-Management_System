@@ -128,10 +128,10 @@ function Header({products,setProducts, items, setItems, slidebarVisibility}) {
             </button>
             <a href="/" className="logo">
               <img
-                src="assets/images/demos/demo-4/logo.png"
+                src="assets/images/logo/logo.svg"
                 alt="Molla Logo"
-                width={105}
-                height={25}
+                width={75}
+                height={10}
               />
             </a>
           </div>

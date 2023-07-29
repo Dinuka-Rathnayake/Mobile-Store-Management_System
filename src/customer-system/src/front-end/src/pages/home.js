@@ -68,7 +68,7 @@ const Home = ({products, setProducts, items, setItems})=> {
           className="intro-slide"
           style={{
             backgroundImage:
-              "url(assets/images/demos/demo-4/slider/slide-1.png)"
+              "url(../assets/images/slide-bar/Band-150x150.jpg)"
           }}
         >
           <div className="container intro-content">

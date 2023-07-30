@@ -68,12 +68,7 @@ export default function AllProducts({setId}){
         }
         else{
             setItems(products)
-        }
-        
-        
-
-        
-        
+        }   
     };
     // console.log(searchResults)
     console.log("item length is "+items.length)

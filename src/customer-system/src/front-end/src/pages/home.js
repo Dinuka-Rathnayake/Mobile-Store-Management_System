@@ -5,9 +5,11 @@ import Footer from "../common/Footer"
 import Header from "../common/Header"
 import { getApi } from "../utils/axios";
 
-const Home = ()=> {
+const Home = ({products, setProducts, items, setItems})=> {
 
-  const [products, setProducts] = useState([]);
+  //take slidebar status
+  var slidebarVisibility = document.getElementById('slidebar');
+  // const [products, setProducts] = useState([]);
   let ID ;
 
   // navigate_another_component
@@ -18,25 +20,36 @@ const Home = ()=> {
         getApi().get("api/products/getproducts").then((res)=>{
            // alert(res.data.length);
             setProducts(res.data);
+            setItems(res.data);
         }).catch((err)=>{
             alert(err.message);
         })
-        
+         
     }
+    
     getProducts();
-},[])
+  },[])
   // console.log(products)
 
   const handleCardClick = (id) => {
     navigate(`/item/${id}`);
   }
 
+  
+    
+    
+  
+  
+  
+
+
+
     return(
       
         <>
- <Header />
-  <main className="main">
-    <div className="intro-slider-container mb-5">
+ <Header products={products} setProducts={setProducts} items={items} setItems={setItems} slidebarVisibility={slidebarVisibility}/>
+  <main className="main"> 
+    <div className="intro-slider-container mb-5" id="slidebar" style={{display: "block"}}>
       <div
         className="intro-slider owl-carousel owl-theme owl-nav-inside owl-light"
         data-toggle="owl"
@@ -55,7 +68,7 @@ const Home = ()=> {
           className="intro-slide"
           style={{
             backgroundImage:
-              "url(assets/images/demos/demo-4/slider/slide-1.png)"
+              "url(../assets/images/slide-bar/Band-150x150.jpg)"
           }}
         >
           <div className="container intro-content">

@@ -45,8 +45,8 @@ export default function EditProducts({selectId}){
 
     //sub categories
     var subCategoryOptions = []
-    var MobilePhones = ["Samsung", "Apple", "Huwawi", "Google", "SONY", "HTC", "Other"]
-    var MobileAccessories = ["HeadPhones", "Chargers", "Adapters", "Data Cables", "Other"]
+    var MobilePhones = ['Samsung', 'Apple', 'Huawei', 'Google', 'Sony', 'HTC', 'Other'];
+    var MobileAccessories = ['HeadPhones', 'Chargers', 'Adapters', 'Data Cables', 'Other'];
     var ElectronicItems = ["Reading Lamps", "Cooling fans", "other"]
     var Laptops = ["Singer", "Mac Book", "other"]
 

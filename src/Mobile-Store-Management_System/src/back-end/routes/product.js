@@ -176,4 +176,41 @@ router.route("/delete/:id").delete(async(req, res) => {
 })
 
 
+//pagination
+router.route("/paginatedUsers").get(async(req, res) => {
+   
+        
+        const allUsers = await Product.find({}) ;
+        const page = parseInt(req.query.page);
+        const limit = parseInt(req.query.limit);
+
+        console.log("hii dinuka")
+        
+        
+        const startIndex = (page -1) * limit;
+        const lastIndex = (page) * limit;
+
+       
+        const results = {}
+        results.totalUsers = allUsers.length
+        results.pageCount = Math.ceil(allUsers.length/limit)
+
+        if(lastIndex  < allUsers.length)
+        results.next = {
+            page: page +1,
+            
+        } 
+        if(lastIndex > 0){
+            results.prev = {
+                page:page - 1,
+            }
+        }
+        
+        
+        results.result = allUsers.slice(startIndex, lastIndex) 
+        res.json(results)
+    
+})
+
+
 module.exports=router;

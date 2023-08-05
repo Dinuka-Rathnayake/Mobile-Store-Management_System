@@ -85,18 +85,6 @@ router.get("/search",async(req, res)=>{
         res.status(500).json({error:true,message:"Internal Server Error"});
     }
 
-
-    // let data = await Product.find(
-    //     {
-    //         "$or":[
-    //             {name:{$regex:".*"+req.body.key+".*"}}
-    //         ]
-    //     }
-    // )
-    // res.json("hii");
-
-    
-
 });
 
 

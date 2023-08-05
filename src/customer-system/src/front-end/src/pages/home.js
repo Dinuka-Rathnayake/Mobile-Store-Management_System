@@ -1,46 +1,60 @@
-import React,{useState, useEffect,createContext} from "react";
+import React, { useState, useEffect, createContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Footer from "../common/Footer"
-import Header from "../common/Header"
+import Footer from "../common/Footer";
+import Header from "../common/Header";
 import { getApi } from "../utils/axios";
 
-const Home = ()=> {
-
-  const [products, setProducts] = useState([]);
-  let ID ;
+const Home = ({ products, setProducts, items, setItems }) => {
+  //take slidebar status
+  var slidebarVisibility = document.getElementById("slidebar");
+  // const [products, setProducts] = useState([]);
+  let ID;
 
   // navigate_another_component
   const navigate = useNavigate();
 
   useEffect(() => {
-    function getProducts(){
-        getApi().get("api/products/getproducts").then((res)=>{
-           // alert(res.data.length);
-            setProducts(res.data);
-        }).catch((err)=>{
-            alert(err.message);
+    function getProducts() {
+      getApi()
+        .get("api/products/getproducts")
+        .then((res) => {
+          // alert(res.data.length);
+          setProducts(res.data);
+          setItems(res.data);
         })
-        
+        .catch((err) => {
+          alert(err.message);
+        });
     }
+
     getProducts();
-},[])
+  }, []);
   // console.log(products)
 
   const handleCardClick = (id) => {
     navigate(`/item/${id}`);
-  }
+  };
 
-    return(
-      
-        <>
- <Header />
-  <main className="main">
-    <div className="intro-slider-container mb-5">
-      <div
-        className="intro-slider owl-carousel owl-theme owl-nav-inside owl-light"
-        data-toggle="owl"
-        data-owl-options='{
+  return (
+    <>
+      <Header
+        products={products}
+        setProducts={setProducts}
+        items={items}
+        setItems={setItems}
+        slidebarVisibility={slidebarVisibility}
+      />
+      <main className="main">
+        <div
+          className="intro-slider-container mb-5"
+          id="slidebar"
+          style={{ display: "block" }}
+        >
+          <div
+            className="intro-slider owl-carousel owl-theme owl-nav-inside owl-light"
+            data-toggle="owl"
+            data-owl-options='{
                   "dots": true,
                   "nav": false, 
                   "responsive": {
@@ -50,142 +64,144 @@ const Home = ()=> {
                       }
                   }
               }'
-      >
-        <div
-          className="intro-slide"
-          style={{
-            backgroundImage:
-              "url(assets/images/demos/demo-4/slider/slide-1.png)"
-          }}
-        >
-          <div className="container intro-content">
-            <div className="row justify-content-end">
-              <div className="col-auto col-sm-7 col-md-6 col-lg-5">
-                <h3 className="intro-subtitle text-third">
-                  Deals and Promotions
-                </h3>
-                {/* End .h3 intro-subtitle */}
-                <h1 className="intro-title">Beats by</h1>
-                <h1 className="intro-title">Dre Studio 3</h1>
-                {/* End .intro-title */}
-                <div className="intro-price">
-                  <sup className="intro-old-price">320000</sup>
-                  <span className="text-third">
-                  299999<sup>.99</sup>
-                  </span>
+          >
+            <div
+              className="intro-slide"
+              style={{
+                backgroundImage: "url(../assets/images/slideBar/slide-1.png)",
+              }}
+            >
+              <div className="container intro-content">
+                <div className="row justify-content-end">
+                  <div className="col-auto col-sm-7 col-md-6 col-lg-5">
+                    <h3 className="intro-subtitle text-third">
+                      Deals and Promotions
+                    </h3>
+                    {/* End .h3 intro-subtitle */}
+                    <h1 className="intro-title">Beats by</h1>
+                    <h1 className="intro-title">Dre Studio 3</h1>
+                    {/* End .intro-title */}
+                    <div className="intro-price">
+                      <sup className="intro-old-price">320000</sup>
+                      <span className="text-third">
+                        299999<sup>.99</sup>
+                      </span>
+                    </div>
+                    {/* End .intro-price */}
+                    <a
+                      href="category.html"
+                      className="btn btn-primary btn-round"
+                    >
+                      <span>Shop More</span>
+                      <i className="icon-long-arrow-right" />
+                    </a>
+                  </div>
+                  {/* End .col-lg-11 offset-lg-1 */}
                 </div>
-                {/* End .intro-price */}
-                <a href="category.html" className="btn btn-primary btn-round">
-                  <span>Shop More</span>
-                  <i className="icon-long-arrow-right" />
-                </a>
+                {/* End .row */}
               </div>
-              {/* End .col-lg-11 offset-lg-1 */}
+              {/* End .intro-content */}
             </div>
-            {/* End .row */}
-          </div>
-          {/* End .intro-content */}
-        </div>
-        {/* End .intro-slide */}
-        <div
-          className="intro-slide"
-          style={{
-            backgroundImage:
-              "url(assets/images/demos/demo-4/slider/slide-2.png)"
-          }}
-        >
-          <div className="container intro-content">
-            <div className="row justify-content-end">
-              <div className="col-auto col-sm-7 col-md-6 col-lg-5">
-                <h3 className="intro-subtitle text-primary">New Arrival</h3>
-                {/* End .h3 intro-subtitle */}
-                <h1 className="intro-title">
-                  Apple iPad Pro <br />
-                  12.9 Inch, 64GB{" "}
-                </h1>
-                {/* End .intro-title */}
-                <div className="intro-price">
-                  <sup>Today:</sup>
-                  <span className="text-primary">
-                    56000<sup>.99</sup>
-                  </span>
+            {/* End .intro-slide */}
+            <div
+              className="intro-slide"
+              style={{
+                backgroundImage: "url(../assets/images/slideBar/slide-2.png)",
+              }}
+            >
+              <div className="container intro-content">
+                <div className="row justify-content-end">
+                  <div className="col-auto col-sm-7 col-md-6 col-lg-5">
+                    <h3 className="intro-subtitle text-primary">New Arrival</h3>
+                    {/* End .h3 intro-subtitle */}
+                    <h1 className="intro-title">
+                      Apple iPad Pro <br />
+                      12.9 Inch, 64GB{" "}
+                    </h1>
+                    {/* End .intro-title */}
+                    <div className="intro-price">
+                      <sup>Today:</sup>
+                      <span className="text-primary">
+                        56000<sup>.99</sup>
+                      </span>
+                    </div>
+                    {/* End .intro-price */}
+                    <a
+                      href="category.html"
+                      className="btn btn-primary btn-round"
+                    >
+                      <span>Shop More</span>
+                      <i className="icon-long-arrow-right" />
+                    </a>
+                  </div>
+                  {/* End .col-md-6 offset-md-6 */}
                 </div>
-                {/* End .intro-price */}
-                <a href="category.html" className="btn btn-primary btn-round">
-                  <span>Shop More</span>
-                  <i className="icon-long-arrow-right" />
-                </a>
+                {/* End .row */}
               </div>
-              {/* End .col-md-6 offset-md-6 */}
+              {/* End .intro-content */}
             </div>
-            {/* End .row */}
+            {/* End .intro-slide */}
           </div>
-          {/* End .intro-content */}
+          {/* End .intro-slider owl-carousel owl-simple */}
+          <span className="slider-loader" />
+          {/* End .slider-loader */}
         </div>
-        {/* End .intro-slide */}
-      </div>
-      {/* End .intro-slider owl-carousel owl-simple */}
-      <span className="slider-loader" />
-      {/* End .slider-loader */}
-    </div>
-    {/* End .intro-slider-container */}
+        {/* End .intro-slider-container */}
 
+        {/* <div className="row text-center"> */}
 
-    {/* <div className="row text-center"> */}
-                        
-                 <div className="container ">
-                          <div className="row row-cols-1 row-cols-md-3 g-4 "> {/*row justify-content-center*/}
-                            {products.map(post => ( 
-                                <div className="col"> 
-                                    <div className="card h-100 "  style={{ width: "25rem" }}>
-                                         <img src={post.imgUrl} className="card-img-top" alt="image not found" onClick={()=> handleCardClick(post._id)} />
-                                        <div className="card-body text-center" style={{ paddingLeft: "40px" }}>
-                                            <h5 className="card-title">
-                                                <p style={{ fontWeight: 700, fontFamily: "'Poppins'" }} key={post._id}>{post.name}</p>
-                                            </h5>
+        <div className="container ">
+          <div className="row row-cols-1 row-cols-md-3 g-4 ">
+            {" "}
+            {/*row justify-content-center*/}
+            {products.map((post) => (
+              <div className="col">
+                <div className="card h-100 " style={{ width: "25rem" }}>
+                  <img
+                    src={post.imgUrl}
+                    className="card-img-top"
+                    alt="image not found"
+                    onClick={() => handleCardClick(post._id)}
+                  />
+                  <div
+                    className="card-body text-center"
+                    style={{ paddingLeft: "40px" }}
+                  >
+                    <h5 className="card-title">
+                      <p
+                        style={{ fontWeight: 700, fontFamily: "'Poppins'" }}
+                        key={post._id}
+                      >
+                        {post.name}
+                      </p>
+                    </h5>
 
-                                            <p className="card-text">
-                                                <p style={{ fontWeight: 500, fontFamily: "'Poppins'" }} key={post._id}>Price : {post.price}</p>
-                                            </p>
-                                            
-                                            
+                    <p className="card-text">
+                      <p
+                        style={{ fontWeight: 500, fontFamily: "'Poppins'" }}
+                        key={post._id}
+                      >
+                        Price : {post.price}
+                      </p>
+                    </p>
 
-                                            <p key={post._id} >
-                                                {/* <button type="button" className="btn btn-primary" onClick={(e) => routeChange(post._id, e)}>Edit</button> */}
-                                                
-                                                <span>   </span>
-                                                {/* <button type="button" className="btn btn-danger" onClick={(e) => deleteRow(post._id, e)}>Delete</button> */}
+                    <p key={post._id}>
+                      {/* <button type="button" className="btn btn-primary" onClick={(e) => routeChange(post._id, e)}>Edit</button> */}
 
-                                    
-                                            </p>
-                                        </div>
-                                    </div>
-                                   
-                                
-                                </div>   
-                            ))
-                        } </div>
-
-
-
-
-
-                        
-
-                        
-                    
+                      <span> </span>
+                      {/* <button type="button" className="btn btn-danger" onClick={(e) => deleteRow(post._id, e)}>Delete</button> */}
+                    </p>
+                  </div>
                 </div>
-                <Footer />
-  
-   
-             
-  </main>
-  {/* End .main */}
-</>
-
-        
-
-    );
-}
+              </div>
+            ))}{" "}
+          </div>
+        </div>
+        <Footer />
+      </main>
+      {/* End .main */}
+    </>
+  );
+};
 
 export default Home;

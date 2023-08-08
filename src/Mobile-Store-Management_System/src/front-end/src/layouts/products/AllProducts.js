@@ -1,10 +1,11 @@
-import React,{useState, useEffect,createContext} from "react";
+import React,{useState, useEffect,createContext, useRef} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import Swal from "sweetalert2";
 import EditProducts from "./EditProducts";
+import ReactPaginate from 'react-paginate';
 
 
 
@@ -13,6 +14,10 @@ export default function AllProducts({setId}){
 
     const [products, setProducts] = useState([]);
     const [items, setItems] = useState(products);
+    const [limit, setLimit] = useState(5);
+    const [pageCount, setPageCount] = useState(1)
+    const currentPage = useRef();
+
     
     // console.log(items)
 
@@ -26,6 +31,7 @@ export default function AllProducts({setId}){
 
     // read_products
     useEffect(() => {
+        currentPage.current = 1;
         function getStudents() {
             axios.get("http://localhost:8070/product/").then((res) =>{
                 setProducts(res.data);
@@ -35,7 +41,8 @@ export default function AllProducts({setId}){
                 alert(err.message);
             })
         }
-        getStudents();
+        // getStudents();
+        getPaginatedUsers();
         
     }, [])
 
@@ -152,6 +159,36 @@ export default function AllProducts({setId}){
 
     }
     
+    //handle page click
+    function handlePageClick(e){
+
+        console.log(e)
+        // fetch(`http://localhost:8070/product/search?page=${currentPage}&limit=${limit}`,{
+        //     method:"GET",
+        // })
+        // .then((res) => res.json())
+        // .then((data) => {
+        //     setProducts(data);
+        //     setItems(data)
+        //     console.log(data, "userdata");
+            
+        // });
+        currentPage.current = e.selected +1
+        getPaginatedUsers();
+        
+    }
+
+    //getPaginatedUsers
+    function getPaginatedUsers(){
+        axios.get(`http://localhost:8070/product/paginatedUsers?page=${currentPage.current}&limit=${limit}`).then((res) =>{
+                setProducts(res.data.result);
+                setItems(res.data.result)
+                setPageCount(res.data.pageCount)
+                 console.log(res.data);
+            }).catch((err) => {
+                alert(err.message);
+        })
+    }
 
     return(
         <div className="container">
@@ -263,14 +300,36 @@ export default function AllProducts({setId}){
                                         </div>
                                        
                                     
-                                    </div>    
+                                    </div> 
+                                       
                                 ))
                             }
-
-                            
+                
                         
                         </div>
+                        <ReactPaginate
+                        breakLabel="..."
+                        nextLabel="next >"
+                        onPageChange={handlePageClick}
+                        pageRangeDisplayed={5}
+                        pageCount={pageCount}
+                        previousLabel="< previous"
+                        renderOnZeroPageCount={null}
+                        marginPagesDisplayed={2}
+                        
+                        containerClassName="pagination justify-content-center"
+                        pageClassName="page-item"
+                        pageLinkClassName="page-link"
+                        previousClassName="page-item"
+                        previousLinkClassName="page-link"
+                        nextClassName="page-item"
+                        nextLinkClassName="page-link"
+                        activeClassName="active"
+                        />  
+                            
                     </div>
+                    
+                        
                 </div>
         
         

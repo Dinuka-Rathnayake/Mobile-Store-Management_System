@@ -46,6 +46,7 @@ export default function AllProducts({setId}){
         
     }, [])
 
+
     
     
     
@@ -82,7 +83,7 @@ export default function AllProducts({setId}){
     // if(searchQuery.length != 0 && items.length != 0){
      
     // }
-
+    
 
     
     // delete_product

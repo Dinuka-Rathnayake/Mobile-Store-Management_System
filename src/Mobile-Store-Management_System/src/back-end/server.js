@@ -68,7 +68,6 @@ const Addinquiryrouter = require("./routes/Addinquiry_routes.js");
 //9.run route file using express
 
 app.use("/api",user);
-
 app.use("/product",productRouter);
 
 
